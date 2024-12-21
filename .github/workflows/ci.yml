@@ -7,8 +7,7 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron: '0 0 * * *'  # Runs at midnight UTC every day
+  workflow_dispatch:  # This allows manual triggering of the workflow
 
 jobs:
   test:
@@ -21,7 +20,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.10'  
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
@@ -35,6 +34,7 @@ jobs:
     - name: Run flake8
       run: |
         flake8 .
+
    
 
 
